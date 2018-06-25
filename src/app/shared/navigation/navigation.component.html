@@ -1,0 +1,68 @@
+
+<div class="container">
+  <nav class="width-controlled not-mobile-nav">
+    <ul>
+      <li class="left-aligned">
+        <mat-icon>fitness_center</mat-icon>
+      </li>
+      <li class="right-aligned">
+        <button mat-menu-item>
+          <a href="">Home</a>
+        </button>
+      </li>
+      <li class="right-aligned">
+        <button mat-menu-item>
+          <a scrollTo scrollTargetSelector="#solution" href="">Our Solution</a>
+        </button>
+      </li>
+      <li class="right-aligned">
+        <button mat-menu-item>
+          <a scrollTo scrollTargetSelector="#pricing" href="">Pricing</a>
+        </button>
+      </li>
+      <li class="right-aligned">
+        <button mat-menu-item>
+          <a scrollTo scrollTargetSelector="#features" href="">Features</a>
+        </button>
+      </li>
+      <li class="right-aligned">
+        <button mat-menu-item>
+          <a scrollTo scrollTargetSelector="#about" href="">Why Us</a>
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+
+
+  <nav class="width-controlled mobile-nav">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+      Menu
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <a href="">Home</a>
+      </button>
+
+      <button mat-menu-item>
+        <a href="">Our Solution</a>
+      </button>
+
+      <button mat-menu-item>
+        <a href="">Pricing</a>
+      </button>
+
+      <button mat-menu-item>
+        <a href="">Features</a>
+      </button>
+
+      <button mat-menu-item>
+        <a href="">Why Us</a>
+      </button>
+    </mat-menu>
+  </nav>
+
+</div>
+
+

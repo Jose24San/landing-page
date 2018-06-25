@@ -1,0 +1,51 @@
+.image-container {
+  position: relative;
+  height: 50vh;
+  background-image: url('../../../assets/laptop-graphs-small.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+
+  @media only screen and (min-width: 600px) {
+    height: 96vh;
+    background-image: url('../../../assets/laptop-graphs-medium.jpg');
+  }
+
+  @media only screen and (min-width: 900px) {
+    background-image: url("../../../assets/laptop.jpg");
+  }
+
+
+  &.overlay {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0,0,0,0.4)), url('../../../assets/laptop.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    p {
+      color: white;
+    }
+  }
+}
+
+
+p {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  color: #423f3f;
+  width: 95%;
+  text-align: center;
+
+  @media only screen and (min-width: 600px) {
+    top: 20%;
+    font-size: 2.2rem;
+
+    br {
+      display: none;
+    }
+  }
+}

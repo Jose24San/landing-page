@@ -1,0 +1,41 @@
+section {
+  background-color: #f0f0f0;
+  padding: 80px 0;
+}
+
+.mat-card-title {
+  text-align: center;
+}
+
+
+.price {
+  text-align: center;
+
+  .dollar-amount {
+    font-size: 30px;
+  }
+}
+
+
+.trial {
+  border: 1px solid #b9b4b4;
+}
+
+.mat-card {
+  padding: 40px;
+}
+
+.attention {
+  margin-top: -40px !important;
+  margin-left: -40px;
+  margin-right: -40px;
+  margin-bottom: 15px;
+  background-color: #f54236;
+  padding: 7px;
+
+  p {
+    color: white;
+    margin: 0;
+    text-align: center;
+  }
+}

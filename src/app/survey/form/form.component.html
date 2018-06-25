@@ -1,0 +1,31 @@
+<section class="width-controlled">
+  <h2>Sorry, you caught us before we are ready. We are still in beta testing but we would love your help in refining our product to make sure we get it right. Sign up as a beta user below.</h2>
+  <div>
+    <button mat-raised-button color="primary" class="first" (click)="displayForm()">Heck Yes Sign me up!</button>
+    <button mat-raised-button color="primary" (click)="displayForm()">Email me when the product is ready</button>
+  </div>
+
+
+  <mat-card *ngIf="showForm" class="form-container">
+    <mat-horizontal-stepper [linear]="isLinear" #stepper>
+      <mat-step label="Step 1">
+        Content 1
+
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </mat-step>
+      <mat-step label="Step 2">
+        Content 2
+
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </mat-step>
+
+    </mat-horizontal-stepper>
+  </mat-card>
+
+
+</section>
