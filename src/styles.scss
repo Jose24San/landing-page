@@ -44,3 +44,9 @@ html, body {
   text-align: left;
   margin-top: 0;
 }
+
+
+// Disable header navigation for angular material stepper
+.mat-horizontal-stepper-header{
+  pointer-events: none !important;
+}

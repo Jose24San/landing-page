@@ -2,7 +2,13 @@ section {
   color: black;
   margin-top: 50px;
   padding-top:40px;
-  height: 50vh;
+  padding-bottom: 40px;
+  min-height: 50vh;
+}
+
+.mat-form-field {
+  display: block;
+  max-width: 200px;
 }
 
 .first {
@@ -13,5 +19,6 @@ section {
 .form-container {
   margin-top: 40px;
 }
+
 
 
