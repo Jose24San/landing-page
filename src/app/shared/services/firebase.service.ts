@@ -6,9 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class FirebaseService {
-  private betaList: AngularFirestore;
-  private emailList: AngularFirestore;
-  items: Observable;
+  private betaList: AngularFirestoreCollection;
+  private emailList: AngularFirestoreCollection;
+  items: Observable<any>;
 
   constructor(private firestore: AngularFirestore) {
     this.betaList = firestore.collection('betaList');
@@ -26,9 +26,9 @@ export class FirebaseService {
 
   addToEmailList(item, callback) {
     this.emailList.add(item).then((success) => {
-      callback(success);
+      callback('success', success);
     }).catch((error) => {
-      callback(error);
+      callback('error', error);
     });
   }
 }

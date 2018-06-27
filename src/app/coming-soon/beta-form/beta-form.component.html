@@ -28,7 +28,7 @@
 
     <mat-step label="Step 2" [stepControl]="secondFormGroup">
 
-      <div *ngIf="!showSpinner">
+      <div *ngIf="!loading">
         <form [formGroup]="secondFormGroup">
           <ng-template matStepLabel>What are your fitness goals</ng-template>
 
@@ -52,12 +52,12 @@
 
         <div>
           <button mat-button matStepperPrevious>Back</button>
-          <button mat-button (click)="submitInfo(stepper)" [disabled]="disableFinish">Finish</button>
+          <button mat-button (click)="submitInfo(stepper)" [disabled]="disableFinish">Submit</button>
         </div>
       </div>
 
 
-      <mat-spinner *ngIf="showSpinner"></mat-spinner>
+      <mat-spinner *ngIf="loading"></mat-spinner>
 
 
     </mat-step>

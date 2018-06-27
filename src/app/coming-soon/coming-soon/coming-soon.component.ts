@@ -15,6 +15,12 @@ export class ComingSoonComponent implements OnInit {
   }
 
   displayForm(form) {
-    this[form] = true;
+    if (form === 'betaForm') {
+      this.emailForm = false;
+      this[form] = true;
+    } else {
+      this.betaForm = false;
+      this[form] = true;
+    }
   }
 }

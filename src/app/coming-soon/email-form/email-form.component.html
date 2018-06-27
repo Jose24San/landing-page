@@ -1,23 +1,38 @@
-<p>
-  email-form works!
-</p>
-
 
 <mat-card>
   <mat-horizontal-stepper linear #stepper>
     <mat-step label="Step 1" [stepControl]="firstFormGroup">
-      <ng-template matStepLabel>Lets get to some contact information from you</ng-template>
+      <ng-template matStepLabel>Contact information</ng-template>
 
-      <mat-form-field>
-        <input matInput placeholder="First name" required>
-      </mat-form-field>
+      <div *ngIf="!loading">
+        <form [formGroup]="firstFormGroup">
+
+          <mat-form-field>
+            <input matInput placeholder="First name" formControlName="firstName" required>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Last name" formControlName="lastName" required>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="email" formControlName="email" required>
+          </mat-form-field>
+        </form>
+
+
+        <button mat-button [disabled]="disableFinish" (click)="submitInfo(stepper)">Submit</button>
+      </div>
+
+
+      <mat-spinner *ngIf="loading"></mat-spinner>
+
     </mat-step>
 
     <mat-step label="Completed">
-      <ng-template matStepLabel></ng-template>
-
-      <p>Finished</p>
+      {{ completionMessage }}
     </mat-step>
+
   </mat-horizontal-stepper>
 
 </mat-card>

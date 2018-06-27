@@ -22,7 +22,7 @@ export class BetaFormComponent implements OnInit {
   ];
   disableFinish = true;
   answers: object;
-  showSpinner = false;
+  loading = false;
   completionMessage: string;
   stepperRef: any;
 
@@ -60,7 +60,7 @@ export class BetaFormComponent implements OnInit {
 
   submitInfo(stepperRef) {
     this.stepperRef = stepperRef;
-    this.showSpinner = true;
+    this.loading = true;
     this._firebaseService.addToBetaList(this.answers, (responseType, response) => {
 
       if (responseType === 'success') {
@@ -75,13 +75,13 @@ export class BetaFormComponent implements OnInit {
 
   success() {
     this.completionMessage = 'Thank you for signing up! We look forward to hearing from you about our product.';
-    this.showSpinner = false;
+    this.loading = false;
     this.stepperRef.selectedIndex = 2;
   }
 
   failed() {
     this.completionMessage = 'Oops looks like we are having an issue, please try again later.';
-    this.showSpinner = false;
+    this.loading = false;
     this.stepperRef.selectedIndex = 2;
   }
 }

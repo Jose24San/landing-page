@@ -47,13 +47,6 @@ import { environment } from '../environments/environment';
 
 // 3rd party packages
 import { ScrollToModule } from 'ng2-scroll-to';
-import { BetaFormComponent } from './coming-soon/beta-form/beta-form.component';
-import { EmailFormComponent } from './coming-soon/email-form/email-form.component';
-
-
-
-
-
 
 
 
