@@ -1,0 +1,19 @@
+
+
+<section class="width-controlled">
+  <h2>Sorry, you caught us before we are ready. We are still in beta testing but we would love your help in refining our product to make sure we get it right. Sign up as a beta user below.</h2>
+  <div>
+    <button mat-raised-button color="primary" class="first" (click)="displayForm('betaForm')">Heck Yes Sign me up!</button>
+    <button mat-raised-button color="primary" (click)="displayForm('emailForm')">Email me when the product is ready</button>
+  </div>
+
+
+  <div class="form-container">
+    <!--<app-form></app-form>-->
+    <app-beta-form *ngIf="betaForm"></app-beta-form>
+    <app-email-form *ngIf="emailForm"></app-email-form>
+  </div>
+
+</section>
+
+

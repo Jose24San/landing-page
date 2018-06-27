@@ -1,0 +1,70 @@
+<mat-card>
+  <mat-horizontal-stepper linear="true" #stepper>
+
+    <mat-step label="Step 1" [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Lets get to know you</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="First name" formControlName="firstName" required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Last name" formControlName="lastName" required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Gender" formControlName="gender" required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Age" formControlName="age" required>
+        </mat-form-field>
+      </form>
+
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+
+    <mat-step label="Step 2" [stepControl]="secondFormGroup">
+
+      <div *ngIf="!showSpinner">
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>What are your fitness goals</ng-template>
+
+          <mat-form-field>
+            <mat-select placeholder="Fitness level" formControlName="level" required>
+              <mat-option *ngFor="let item of fitnessLevels" [value]="item.value">
+                {{ item.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-select placeholder="Primary Fitness Goal" formControlName="goal" required>
+              <mat-option *ngFor="let item of fitnessGoals" [value]="item.value">
+                {{ item.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </form>
+
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="submitInfo(stepper)" [disabled]="disableFinish">Finish</button>
+        </div>
+      </div>
+
+
+      <mat-spinner *ngIf="showSpinner"></mat-spinner>
+
+
+    </mat-step>
+
+    <mat-step label="Completed">
+      {{ completionMessage }}
+    </mat-step>
+
+  </mat-horizontal-stepper>
+</mat-card>

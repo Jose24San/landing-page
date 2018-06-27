@@ -17,6 +17,12 @@ import { PricingComponent } from './home/pricing/pricing.component';
 import { FeaturesComponent } from './home/features/features.component';
 import { AboutComponent } from './home/about/about.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { ComingSoonComponent } from './coming-soon/coming-soon/coming-soon.component';
+import { BetaFormComponent } from './coming-soon/beta-form/beta-form.component';
+import { EmailFormComponent } from './coming-soon/email-form/email-form.component';
+
+// Custom Services
+import { FirebaseService } from './shared/services/firebase.service';
 
 
 // Angular Material
@@ -33,10 +39,19 @@ import { MatInputModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
+
+// Angular firebase
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { environment } from '../environments/environment';
+
 // 3rd party packages
 import { ScrollToModule } from 'ng2-scroll-to';
-import { FormComponent } from './survey/form/form.component';
-import { SurveyComponent } from './survey/survey/survey.component';
+import { BetaFormComponent } from './coming-soon/beta-form/beta-form.component';
+import { EmailFormComponent } from './coming-soon/email-form/email-form.component';
+
+
+
 
 
 
@@ -54,8 +69,9 @@ import { SurveyComponent } from './survey/survey/survey.component';
     FeaturesComponent,
     AboutComponent,
     FooterComponent,
-    FormComponent,
-    SurveyComponent
+    ComingSoonComponent,
+    BetaFormComponent,
+    EmailFormComponent
   ],
   imports: [
     BrowserModule,
@@ -75,9 +91,11 @@ import { SurveyComponent } from './survey/survey/survey.component';
     ReactiveFormsModule,
     MatInputModule,
     MatSelectModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
   ],
-  providers: [],
+  providers: [FirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

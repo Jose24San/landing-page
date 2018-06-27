@@ -1,0 +1,23 @@
+<p>
+  email-form works!
+</p>
+
+
+<mat-card>
+  <mat-horizontal-stepper linear #stepper>
+    <mat-step label="Step 1" [stepControl]="firstFormGroup">
+      <ng-template matStepLabel>Lets get to some contact information from you</ng-template>
+
+      <mat-form-field>
+        <input matInput placeholder="First name" required>
+      </mat-form-field>
+    </mat-step>
+
+    <mat-step label="Completed">
+      <ng-template matStepLabel></ng-template>
+
+      <p>Finished</p>
+    </mat-step>
+  </mat-horizontal-stepper>
+
+</mat-card>

@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FirebaseService } from '../../shared/services/firebase.service';
 
 @Component({
-  selector: 'app-form',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss']
+  selector: 'app-beta-form',
+  templateUrl: './beta-form.component.html',
+  styleUrls: ['./beta-form.component.scss']
 })
-export class FormComponent implements OnInit {
-  showForm = true;
-  isLinear = false;
+export class BetaFormComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   fitnessLevels = [
@@ -24,12 +23,18 @@ export class FormComponent implements OnInit {
   disableFinish = true;
   answers: object;
   showSpinner = false;
+  completionMessage: string;
+  stepperRef: any;
 
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(
+    private _formBuilder: FormBuilder,
+    private _firebaseService: FirebaseService,
+  ) { }
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
-      name: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
       gender: ['', [Validators.required, Validators.minLength(4)]],
       age: ['', [Validators.required, Validators.minLength(2)]]
     });
@@ -54,19 +59,29 @@ export class FormComponent implements OnInit {
   }
 
   submitInfo(stepperRef) {
-    console.log('ref: ', stepperRef);
-    console.log('submitted this information: ', this.answers);
+    this.stepperRef = stepperRef;
     this.showSpinner = true;
-    
-    // Submit information to firebase here
+    this._firebaseService.addToBetaList(this.answers, (responseType, response) => {
 
-    setTimeout(() => {
-      stepperRef.selectedIndex = 2;
-      this.showSpinner = false;
-    }, 3000);
+      if (responseType === 'success') {
+        this.success();
+        console.log('success: ', response);
+      } else {
+        this.failed();
+        console.log('error message: ', response);
+      }
+    });
   }
 
-  displayForm() {
-    this.showForm = true;
+  success() {
+    this.completionMessage = 'Thank you for signing up! We look forward to hearing from you about our product.';
+    this.showSpinner = false;
+    this.stepperRef.selectedIndex = 2;
+  }
+
+  failed() {
+    this.completionMessage = 'Oops looks like we are having an issue, please try again later.';
+    this.showSpinner = false;
+    this.stepperRef.selectedIndex = 2;
   }
 }
